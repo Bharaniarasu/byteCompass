@@ -7,6 +7,7 @@ import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { db } from "./firebase";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./main";
+import FormSuccess from "./formSuccess";
 function App() {
   const [addUser, setAddUser] = useState(false);
   const [userData, setUserData] = useState();
@@ -51,17 +52,31 @@ function App() {
     getUserData();
   }, []);
   return (
-    <Main>
-      {addUser && <AddUserData onHideAddUser={HideAddUser} />}
-      {/* <div className="d-flex row "> */}
-      <Card
-        onShowAddUser={ShowAddUser}
-        userCount={userCount}
-        userData={userData}
-      />
-      {/* </div> */}
-      {/* <AddUser/> */}
-    </Main>
+    <Router>
+      <Main>
+        <Routes>
+          <Route
+            exact
+            path="/userList"
+            element={
+              <>
+                {addUser && <AddUserData onHideAddUser={HideAddUser} />}
+                <Card
+                  onShowAddUser={ShowAddUser}
+                  userCount={userCount}
+                  userData={userData}
+                />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="/formSent"
+            element={<FormSuccess onHideAddUser={HideAddUser} />}
+          />
+        </Routes>
+      </Main>
+    </Router>
   );
 }
 

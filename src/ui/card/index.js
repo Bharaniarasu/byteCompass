@@ -7,7 +7,7 @@ const Card = (props) => {
 
   return (
     <>
-      <div className="card">
+      <div className="card ">
         <div className="card-header">
           <div className="user-count fw-bold">{props.userCount} Users</div>
           <div className="user-add">

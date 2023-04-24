@@ -4,6 +4,7 @@ import "./addUser.scss";
 import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 const AddUserData = (props) => {
   const [userName, setUserName] = useState("");
   const [designation, setDesignation] = useState("");
@@ -19,6 +20,7 @@ const AddUserData = (props) => {
   } = useForm({
     defaultValues: { username: userName },
   });
+  const navigate = useNavigate();
   const UserNameChangeHandler = (event) => {
     setUserName(event.target.value);
   };
@@ -44,6 +46,7 @@ const AddUserData = (props) => {
     setPhoneNumber("");
     setEmail("");
     setuserType("");
+    navigate("/formSent");
   };
   const uname = watch("username");
   return (

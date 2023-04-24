@@ -19,21 +19,21 @@ const NavBar = () => {
               id="menu"
             >
               <li className="nav-item">
-                <a href="#" className="nav-link align-middle px-0">
+                <a href="/" className="nav-link align-middle px-0">
                   <i className="fs-4 fa fa-font-awesome"></i>
                   <span className="ms-1 d-none d-sm-inline">Dashboard</span>
                 </a>
               </li>
 
               <li>
-                <a href="#" className="nav-link px-0 align-middle">
+                <a href="/" className="nav-link px-0 align-middle">
                   <i className="fs-4 fa fa-briefcase"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Jobs</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="#submenu2"
+                  href="/submenu2"
                   data-bs-toggle="collapse"
                   className="nav-link px-0 align-middle "
                 >
@@ -43,7 +43,7 @@ const NavBar = () => {
               </li>
               <li>
                 <a
-                  href="#submenu3"
+                  href="/submenu3"
                   data-bs-toggle="collapse"
                   className="nav-link px-0 align-middle"
                 >
@@ -54,7 +54,7 @@ const NavBar = () => {
 
               <li>
                 <a
-                  href="#submenu1"
+                  href="/submenu1"
                   data-bs-toggle="collapse"
                   className="nav-link px-0 "
                 >
@@ -64,10 +64,10 @@ const NavBar = () => {
                 <ul
                   className="collapse show nav flex-column ms-1"
                   id="submenu1"
-                  data-bs-parent="#menu"
+                  data-bs-parent="/menu"
                 >
                   <li className="w-100">
-                    <a href="#" className="nav-link px-0">
+                    <a href="/" className="nav-link px-0">
                       {" "}
                       <span className="ms-4 d-none d-sm-inline">
                         Your Profile
@@ -75,7 +75,7 @@ const NavBar = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="nav-link px-0">
+                    <a href="/" className="nav-link px-0">
                       {" "}
                       <span className="ms-4 d-none d-sm-inline">
                         Company Info
@@ -83,7 +83,7 @@ const NavBar = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="nav-link px-0">
+                    <a href="/userList" className="nav-link px-0">
                       {" "}
                       <span className="ms-4 d-none d-sm-inline">
                         Users
@@ -91,7 +91,7 @@ const NavBar = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="nav-link px-0">
+                    <a href="/" className="nav-link px-0">
                       {" "}
                       <span className="ms-4 d-none d-sm-inline">
                         Logout
