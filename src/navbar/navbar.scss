@@ -1,4 +1,12 @@
-nav {
+.navbar {
+  background: url("https://wallpaperaccess.com/full/1385492.jpg");
+  background-position: center;
+}
+nav li a {
   //   position: fixed;
-  left: 0;
+  //   left: 0;
+  color: #fff !important;
+}
+nav ul li {
+  margin-left: 10px;
 }
