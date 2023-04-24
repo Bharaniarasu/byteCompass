@@ -1,10 +1,10 @@
 import React from "react";
 import UserData from "../ui/card/userData";
 import Card from "../ui/card";
-
+import "./navbar.scss";
 const NavBar = () => {
   return (
-    <nav className="navbar p-0">
+    <nav className="navbar p-0 ">
       <div className="row flex-nowrap">
         <div className="col-auto col-md-12  bg-dark">
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -20,14 +20,14 @@ const NavBar = () => {
             >
               <li className="nav-item">
                 <a href="#" className="nav-link align-middle px-0">
-                  <i className="fs-4 bi-house"></i>{" "}
+                  <i className="fs-4 fa fa-font-awesome"></i>
                   <span className="ms-1 d-none d-sm-inline">Dashboard</span>
                 </a>
               </li>
 
               <li>
                 <a href="#" className="nav-link px-0 align-middle">
-                  <i className="fs-4 bi-table"></i>{" "}
+                  <i className="fs-4 fa fa-briefcase"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Jobs</span>
                 </a>
               </li>
@@ -37,7 +37,7 @@ const NavBar = () => {
                   data-bs-toggle="collapse"
                   className="nav-link px-0 align-middle "
                 >
-                  <i className="fs-4 bi-bootstrap"></i>{" "}
+                  <i className="fs-4 fa fa-user"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Candidates</span>
                 </a>
               </li>
@@ -47,7 +47,7 @@ const NavBar = () => {
                   data-bs-toggle="collapse"
                   className="nav-link px-0 align-middle"
                 >
-                  <i className="fs-4 bi-grid"></i>{" "}
+                  <i className="fs-4 fa fa-calendar"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Interviews</span>{" "}
                 </a>
               </li>
@@ -58,7 +58,7 @@ const NavBar = () => {
                   data-bs-toggle="collapse"
                   className="nav-link px-0 "
                 >
-                  <i className="fs-4 "></i>{" "}
+                  <i className="fs-4 fa fa-gears"></i>{" "}
                   <span className=" d-none d-sm-inline">Settings</span>{" "}
                 </a>
                 <ul

@@ -5,8 +5,6 @@ const BackDrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onHideAddUser}></div>;
 };
 const ModalOverlay = (props) => {
-  console.log(props);
-
   return (
     <div className={classes.modal}>
       <div className={classes.content}>{props.children}</div>
