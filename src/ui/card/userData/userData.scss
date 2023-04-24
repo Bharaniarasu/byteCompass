@@ -1,0 +1,13 @@
+.table {
+  tr {
+    td {
+      //   padding: 10px;
+    }
+  }
+}
+.table-row button {
+  visibility: hidden;
+}
+.table-row:hover button {
+  visibility: visible;
+}
