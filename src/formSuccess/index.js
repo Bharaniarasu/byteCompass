@@ -9,7 +9,7 @@ const FormSuccess = (props) => {
     setInterval(() => setTimer(timer - 1), 1000);
     setTimeout(() => {
       navigate("/userlist");
-    }, 10000);
+    }, 15000);
   }, [timer]);
 
   return (
@@ -17,6 +17,14 @@ const FormSuccess = (props) => {
       <div className="msg-container">
         <h3>Form Submitted Successfully !!!</h3>
         <p>You will Redirect to home within {timer} seconds...</p>
+        <button
+          className="btn btn-outline-primary mt-3 "
+          onClick={() => {
+            navigate("/userlist");
+          }}
+        >
+          Home
+        </button>
       </div>
     </Modal>
   );

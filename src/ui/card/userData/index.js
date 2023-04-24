@@ -21,11 +21,11 @@ const UserData = (props) => {
           {props.data &&
             props.data.map((data) => (
               <tr className="table-row">
-                <td className="mt-2">{data.userName}</td>
+                <td className="mt-2">{data.username}</td>
 
                 <td>{data.email}</td>
-                <td>{data.phoneNumber}</td>
-                <td>{data.userType}</td>
+                <td>{data.phonenumber}</td>
+                <td>{data.usertype}</td>
                 <td>
                   <div class="form-check form-switch">
                     <input

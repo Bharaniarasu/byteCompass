@@ -12,12 +12,15 @@ function App() {
   const [addUser, setAddUser] = useState(false);
   const [userData, setUserData] = useState();
   const [userCount, setuserCount] = useState(0);
+  // const [successMsg, setSuccessMsg] = useState(true);
+
   // console.log(userData);
   const ShowAddUser = () => {
     setAddUser(true);
   };
   const HideAddUser = () => {
     setAddUser(false);
+    // setSuccessMsg(false);
   };
 
   const fetchCall = (callBack) => {
