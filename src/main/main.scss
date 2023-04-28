@@ -1,1 +1,12 @@
+.panel {
+  display: flex;
+  height: 100vh;
+  .side_panel {
+    display: flex;
 
+    justify-content: flex-start;
+  }
+  .content_panel {
+    width: 83.33333333%;
+  }
+}

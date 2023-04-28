@@ -1,137 +1,121 @@
-import { useEffect, useState } from "react";
 import Modal from "../ui/overLay";
 import "./addUser.scss";
 import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+const schema = yup.object().shape({
+  username: yup
+    .string()
+    .min(3, "**Enter a valid Username**")
+    .required("**Enter a valid Username**"),
+  designation: yup
+    .string()
+    .required("**Enter your Designation**")
+
+    .min(2, "**Enter a valid Designation**"),
+  email: yup
+    .string()
+    .email("**Enter a valid Email ID**")
+    .required("**Enter your Mail ID**"),
+  phonenumber: yup
+    .string()
+    .required("**Enter Your Phone Number**")
+    .min(10, "**Enter a valid 10 digit Phone Number**")
+    .max(12, "**Enter a valid 10 digit Phone Number**"),
+  usertype: yup.string().required("**Select an User Type**"),
+});
 const AddUserData = (props) => {
-  const [userName, setUserName] = useState("");
-  const [designation, setDesignation] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [userType, setuserType] = useState("");
-  const [userData, setUserData] = useState();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
-  } = useForm({
-    defaultValues: { username: userName },
-  });
-  const navigate = useNavigate();
-  const UserNameChangeHandler = (event) => {
-    setUserName(event.target.value);
-  };
-  const DesignationChangeHandler = (event) => {
-    setDesignation(event.target.value);
-  };
-  const EmailChangeHandler = (event) => {
-    setEmail(event.target.value);
-  };
-  const PhoneNumberChangeHandler = (event) => {
-    setPhoneNumber(event.target.value);
-  };
-  const UserTypeChangeHandler = (event) => {
-    setuserType(event.target.value);
-  };
+    formState: { errors, isValid, isDirty },
+  } = useForm({ resolver: yupResolver(schema), mode: "onChange" });
+
   const SubmitFormHandler = async (data, e) => {
     e.preventDefault();
     console.log("data-", data);
-    const formData = { userName, designation, email, phoneNumber, userType };
     await addDoc(collection(db, "UserData"), data);
-    setUserName("");
-    setDesignation("");
-    setPhoneNumber("");
-    setEmail("");
-    setuserType("");
     navigate("/formSent");
   };
-  const uname = watch("username");
+  console.log(errors);
   return (
-    <Modal className="add-user" onHideAddUser={props.onHideAddUser}>
-      <h5 className="text-center text-primary">ADD USER</h5>
-      <form className="row g-3 p-2" onSubmit={handleSubmit(SubmitFormHandler)}>
-        <div className="col-md-6">
-          <label htmlFor="validationCustom01" className="form-label">
+    <Modal className="add_user_panel" onHideAddUser={props.onHideAddUser}>
+      <h3 className="">ADD USER</h3>
+      <form
+        className="add_user_form"
+        onSubmit={handleSubmit(SubmitFormHandler)}
+      >
+        <div className="form_content">
+          <label htmlFor="username" className="">
             User name
           </label>
           <input
             type="text"
-            className="form-control"
-            id="validationCustom01"
-            onChange={UserNameChangeHandler}
-            {...register("username", { required: "Enter valid data " })}
+            className=" "
+            id="username"
+            {...register("username")}
           />
-          {errors?.username && (
-            <p className="text-danger ">**Enter a Valid Data**</p>
-          )}
+
+          <p className="text-warning">{errors.username?.message}</p>
         </div>
-        <div className="col-md-6">
-          <label htmlFor="validationCustom02" className="form-label">
+        <div className="form_content">
+          <label htmlFor="designation" className="">
             Designation
           </label>
           <input
             type="text"
-            className="form-control"
-            id="validationCustom02"
-            {...register("designation", { required: "Enter valid data " })}
+            className=" "
+            id="designation"
+            {...register("designation")}
           />
-          {errors?.designation && (
-            <p className="text-danger ">**Enter a Valid Data**</p>
-          )}
+
+          <p className="text-warning">{errors.designation?.message}</p>
         </div>
-        <div className="col-md-6">
-          <label htmlFor="validationCustom02" className="form-label">
+        <div className="form_content">
+          <label htmlFor="email" className="">
             Email ID
           </label>
-          <input
-            type="email"
-            className="form-control"
-            id="exampleFormControlInput1"
-            {...register("email", { required: "Enter valid data " })}
-          />
-          {errors?.email && (
-            <p className="text-danger ">**Enter a Valid Data**</p>
-          )}
+          <input type="email" className=" " id="email" {...register("email")} />
+
+          <p className="text-warning">{errors.email?.message}</p>
         </div>{" "}
-        <div className="col-md-6">
-          <label htmlFor="validationCustom02" className="form-label">
+        <div className="form_content">
+          <label htmlFor="phone" className="">
             Phone Number
           </label>
           <input
             type="number"
-            className="form-control"
-            id="validationCustom02"
-            {...register("phonenumber", {
-              required: "Enter valid data ",
-              maxLength: { value: 10, message: "Enter a Valid Phone Number" },
-              minLength: { value: 10, message: "Enter a Valid Phone Number" },
-            })}
+            className=""
+            id="phone"
+            {...register("phonenumber")}
           />
-          {errors?.phonenumber && (
-            <p className="text-danger ">**Enter a Valid Phone Number**</p>
-          )}
+
+          <p className="text-warning">{errors.phonenumber?.message}</p>
         </div>
-        <div className="col-md-12">
-          <label htmlFor="validationCustom02" className="form-label">
+        <div className="form_content form_content_select">
+          <label htmlFor="usertype" className="">
             User Type
           </label>
-          <select
-            id="inputState"
-            className="form-select"
-            {...register("usertype", { required: "Select valid data " })}
-          >
+          <select id="usertype" className=" " {...register("usertype")}>
+            <option></option>
             <option value="Admin">Admin</option>
             <option value="Recruiter">Recruiter</option>
           </select>
-          {errors?.usertype && (
-            <p className="text-danger ">**Select a Valid Type**</p>
-          )}
+          <p className="text-warning">{errors.usertype?.message}</p>
         </div>
         {errors.exampleRequired && <span>This field is required</span>}
-        <input type="submit" className="btn btn-primary " value="Submit" />
+        <input
+          type="submit"
+          className="submit_button "
+          value="Submit"
+          disabled={isDirty && !isValid}
+        />
       </form>
     </Modal>
   );

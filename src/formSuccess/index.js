@@ -18,9 +18,9 @@ const FormSuccess = (props) => {
         <h3>Form Submitted Successfully !!!</h3>
         <p>You will Redirect to home within {timer} seconds...</p>
         <button
-          className="btn btn-outline-primary mt-3 "
+          className="add_button "
           onClick={() => {
-            navigate("/userlist");
+            navigate("/");
           }}
         >
           Home

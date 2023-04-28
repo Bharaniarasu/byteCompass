@@ -1,8 +1,38 @@
 .App {
-  /* text-align: center; */
-  overflow-y: hidden;
+  // overflow-y: hidden;
+}
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+.add_button {
+  background: #0d6efd;
+  color: #fff;
+}
+.add_button:hover {
+  background: #003c96;
 }
 
+.edit_button {
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+}
+.edit_button:hover {
+  background: #0d6efd;
+  color: #fff;
+}
+.delete_button {
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+.delete_button:hover {
+  background: #ff0000;
+  color: #fff;
+}
+.text-warning {
+  color: red;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

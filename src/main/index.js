@@ -4,11 +4,11 @@ import "./main.scss";
 
 const Main = (props) => {
   return (
-    <div className="row">
-      <div className="navbar col-2 p-0 m-0 align-items-start">
+    <div className="panel">
+      <div className="side_panel">
         <NavBar />
       </div>
-      <div className="content col-10 ps-0">{props.children}</div>
+      <div className="content_panel">{props.children}</div>
     </div>
   );
 };

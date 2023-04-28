@@ -1,18 +1,15 @@
 import "./card.scss";
-import React, { useState } from "react";
 import UserData from "./userData";
 
 const Card = (props) => {
-  const [userCount, setUserCount] = useState();
-
   return (
     <>
-      <div className="card ">
-        <div className="card-header">
-          <div className="user-count fw-bold">{props.userCount} Users</div>
-          <div className="user-add">
+      <div className="content_card ">
+        <div className="card_header">
+          <div className="users_count">{props.userCount} Users</div>
+          <div className="add_user">
             <button
-              className="btn btn-primary"
+              className="add_button"
               onClick={() => {
                 props.onShowAddUser();
               }}

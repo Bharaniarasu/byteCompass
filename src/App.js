@@ -1,32 +1,29 @@
-import "./App.css";
+import "./App.scss";
 import Card from "./ui/card";
-import NavBar from "./navbar";
 import AddUserData from "./addUser/addUser";
 import { useEffect, useState } from "react";
 import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { db } from "./firebase";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Main from "./main";
 import FormSuccess from "./formSuccess";
 function App() {
   const [addUser, setAddUser] = useState(false);
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState([]);
   const [userCount, setuserCount] = useState(0);
-  // const [successMsg, setSuccessMsg] = useState(true);
 
-  // console.log(userData);
   const ShowAddUser = () => {
     setAddUser(true);
   };
   const HideAddUser = () => {
     setAddUser(false);
-    // setSuccessMsg(false);
   };
 
-  const fetchCall = (callBack) => {
-    // callBack();
-    // console.log(callBack);
-  };
   const getUserData = async () => {
     const q = query(collection(db, "UserData"));
     const querySnap = await getDocs(q);
@@ -36,14 +33,14 @@ function App() {
     });
     setUserData(userData);
     setuserCount(userData.length);
+    sortData(userData);
   };
-  console.log(userData);
 
-  const sortedData = () => {
-    let sortedData = userData.sort((a, b) => {
-      if (a.userName > b.userName) {
+  const sortData = (data) => {
+    let sortedData = data.sort((a, b) => {
+      if (a.username > b.username) {
         return 1;
-      } else if (a.userName < b.userName) {
+      } else if (a.username < b.username) {
         return -1;
       } else {
         return 0;
@@ -51,9 +48,11 @@ function App() {
     });
     console.log(sortedData);
   };
+
   useEffect(() => {
     getUserData();
   }, []);
+
   return (
     <Router>
       <Main>
